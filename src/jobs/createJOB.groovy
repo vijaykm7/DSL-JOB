@@ -3,7 +3,7 @@ scm {
 github('jenkinsci/job-dsl-plugin', 'master')
 }
 triggers {
-cron("@hourly")
+cron("@minute")
 }
 steps {
 shell("echo 'Hello World'")
