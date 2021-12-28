@@ -1,10 +1,23 @@
-buildPipelineView('project-A') {
+listView('project-A') {
+    description('All production jobs for project A')
     filterBuildQueue()
     filterExecutors()
-    title('Project A CI Pipeline')
-    displayedBuilds(5)
-    selectedJob('project-A-compile')
-    alwaysAllowManualTrigger()
-    showPipelineParameters()
-    refreshFrequency(60)
+    jobs {
+        name('release-projectA')
+        regex(/project-A-.+/)
+    }
+    jobFilters {
+        status {
+            status(Status.UNSTABLE)
+        }
+    }
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
+    }
 }
